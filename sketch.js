@@ -66,11 +66,12 @@ function setup() {
   obstaclesGroup = new Group();
   
   score = 0;
+  
 }
 
 function draw() {
   //trex.debug = true;
-  background("cyan");
+  background(255);
   text("Score: "+ score, 500,50);
   
   if (gameState===PLAY){
@@ -94,6 +95,7 @@ function draw() {
     if(obstaclesGroup.isTouching(trex)){
         gameState = END;
     }
+    text("HighScore: "+ localStorage["HighestScore"], 100,50);
   }
   else if (gameState === END) {
     gameOver.visible = true;
@@ -185,6 +187,8 @@ function reset(){
   
   trex.changeAnimation("running",trex_running);
   
+  
+  
   if(localStorage["HighestScore"]<score){
     localStorage["HighestScore"] = score;
   }
@@ -193,3 +197,4 @@ function reset(){
   score = 0;
   
 }
+
